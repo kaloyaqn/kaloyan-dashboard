@@ -96,7 +96,6 @@ export default function Signup() {
 
             if (res.ok) {
                 router.push('/');
-                notifyerror();
                 setSpinner('Sign up')
             } else {
                 console.error("Sign Up failed")
