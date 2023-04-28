@@ -5,6 +5,8 @@ import FormButton from "../components/Buttons/FormButton";
 import Link from "next/link";
 import {useForm} from "react-hook-form"
 import { useRouter } from 'next/router';
+import {toast} from 'react-toastify';
+
 
 
 const Form = styled.form`
@@ -68,6 +70,14 @@ export default function Signup() {
     });
     const password = useRef({});
     password.current = watch("password", "");
+
+    const notifyerror = () => toast.error("Wrong Email/Password", {
+        position: "top-center",
+        hideProgressBar: true,
+        closeOnClick: true,
+        draggable: true,
+        duration: "5000",
+    });
 
     const handleSignup = async (data, event) => {
         event.preventDefault();
