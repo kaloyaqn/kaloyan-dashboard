@@ -92,6 +92,7 @@ export default function Login() {
             });
 
             if (res.ok) {
+                // setLoggedIn(true);
                 router.push('/');
             } else {
                 notifyerror();

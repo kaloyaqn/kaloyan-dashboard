@@ -63,9 +63,10 @@ font-weight:400;
 
 export default function Signup() {
     const [spinner, setSpinner] = useState('Sign up');
+    // const [emailMessage, setEmailMessage] = useState('');
     const router = useRouter();
 
-    const { register, watch, handleSubmit, formState: {errors} } = useForm({
+    const { register, watch, handleSubmit, setError, formState: {errors} } = useForm({
         mode: "onBlur", 
     });
     const password = useRef({});
@@ -99,10 +100,15 @@ export default function Signup() {
                 setSpinner('Sign up')
             } else {
                 console.error("Sign Up failed")
-                notifyerror();
+                // notifyerror();
                 setSpinner('Sign up')
             }
-
+            if (res.status === 401) {
+                setError('email', {
+                    type: "server",
+                    message: "Email is already in use"
+                });                
+            }
             const data = await res.json();
             console.log(data)
 
@@ -204,6 +210,7 @@ export default function Signup() {
                     })}
                     />
                     {errors.email && <Error>{errors.email.message}</Error>}
+
                 </div>
                 <div className="flex space-between">
                     <div style={{ width: "48%" }}>

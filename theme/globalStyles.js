@@ -77,6 +77,10 @@ const GlobalStyle = createGlobalStyle`
         text-decoration:none;
     }
 
+    li {
+        list-style-type: none;
+    }
+
     .flex {
         display:flex !important;
     }
@@ -99,6 +103,10 @@ const GlobalStyle = createGlobalStyle`
 
     .vh-100 {
        height:100vh !important;
+    }
+
+    .g-4 {
+        gap:4px;
     }
 
     .g-6 {
@@ -128,6 +136,7 @@ const GlobalStyle = createGlobalStyle`
     .mb-32 {
         margin-bottom:2rem;
     }
+
 
     .text-center {
         text-align:center !important:
@@ -188,6 +197,74 @@ const GlobalStyle = createGlobalStyle`
         100% {
             transform: rotate(360deg);
         }
-        } 
+    }
+
+    button {
+        border: 0;
+        background:none;
+        cursor: pointer;
+    }
+
+    .no {
+        color: var(--gray-500);
+        font-size: var(--font-size-text-sm);
+        font-weight:var(--font-weight-semibold);
+        
+        &:hover {
+            color:var(--gray-700);
+        }
+    }
+
+    .yes {
+        color: var(--primary-700);
+        font-size: var(--font-size-text-sm);
+        font-weight:var(--font-weight-semibold);
+        
+        &:hover {
+            color:var(--primary-800);
+        }
+    }
+
+    .progressbar {
+        width:100%;
+        height:8px;
+        background: var(--primary-100);
+        border-radius: 4px;
+    }
+    main {
+        margin-left: 82px; 
+        padding:2rem;
+
+    }
+
+    .hover-active:hover {
+        width:312px !important;
+        box-shadow: var(--shadow-xs);
+
+
+        .info, input, .link-name, .profile-information, .profile button {
+            display:block;
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            }
+            width:312px;
+            background:white;
+      
+            li {
+              display:block;
+              justify-content:flex-start;
+            }
+      
+            .profile {
+              display:block;
+              justify-content:center;
+              button {
+                display:block;
+              }
+            }
+          }      
+    }
+    
 `
 export default GlobalStyle;
