@@ -248,7 +248,7 @@ export default function Signup() {
                         />
                         {errors.repeatPassword && <Error>{errors.repeatPassword.message}</Error>}
                     </div>
-                    </div>
+                </div>
 
                 <FormButton type="submit" title={spinner}/>
                 <span>Already have an account? <Link href="/login">Log in</Link></span>

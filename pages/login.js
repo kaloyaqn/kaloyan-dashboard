@@ -165,6 +165,6 @@ export default function Login() {
             <span>Already have an account? <Link href="/signup">Sign up</Link></span>
         </Form>
 
-    </div>
+        </div>
     )
 }

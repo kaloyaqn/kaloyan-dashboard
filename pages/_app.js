@@ -16,28 +16,28 @@ export default function MyApp({ Component, pageProps }) {
 
     const showLayout = router.pathname !== '/login';
 
-    useEffect(() => {
-        if (showLayout) {
-            fetch('api/user/isAuth')
-            .then(res => res.json())
-            .then(data => {
-                if (data.loggedIn) {
-                    setLoggedIn(true)
-                    setLoading(false);
-                } else {
-                    setLoading(true)
-                    setLoggedIn(false);
-                    router.push('/login')
-                }
-            })
-            .catch(error => {
-                console.error("Error cheking login status:", error);
-                setLoggedIn(false);
-                setLoading(true);
-                router.push('/login');
-            })
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (showLayout) {
+    //         fetch('api/user/isAuth')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.loggedIn) {
+    //                 setLoggedIn(true)
+    //                 setLoading(false);
+    //             } else {
+    //                 setLoading(true)
+    //                 setLoggedIn(false);
+    //                 router.push('/login')
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error("Error cheking login status:", error);
+    //             setLoggedIn(false);
+    //             setLoading(true);
+    //             router.push('/login');
+    //         })
+    //     }
+    // }, [])
 
   return (
     <>
