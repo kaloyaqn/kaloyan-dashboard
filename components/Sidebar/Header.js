@@ -3,125 +3,6 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import Button from '@mui/material/Button';
 
-
-const Sidebar = styled.div`
-z-index:11;
-position: fixed;
-height:100vh;
-max-width:312px;
-width:96px;
-background:#fff;
-border-right:1px solid #EAECF0;
-padding-top:2rem;
-display:flex;
-flex-direction:column;
-gap:24px;
-transition: width 200ms cubic-bezier(0.08,0.52,0.52,1);
-
-
-  div {
-    padding-left: 1.5rem;
-    padding-right:1.5rem;
-  }
-
-  div > div {
-    padding-left: 0;
-    padding-right:0;
-  }
-
-
-    .info, input, .link-name, .profile-information, .profile button {
-      display:none;
-      opacity: 0;
-      transform: translateX(0%);
-    }
-
-    @media (max-width: 768px) {
-      display:none;
-    }
-  
-`
-
-const SidebarTitle = styled.h3`
-  padding-left: 24px;
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-text-xl);
-`
-
-const SidebarLinks = styled.div`
-  ul {
-    gap:4px;
-  }
-
-  li {
-    padding: 8px 12px;
-    cursor:pointer;
-    gap:12px;
-
-    &:hover {
-      background: var(--gray-50);
-      border-radius: 6px;
-    }
-
-    a {
-      color: var(--gray-700);
-      font-size: var(--font-size-text-md);
-      font-weight: var(--font-weight-medium);
-    }
-  }
-`
-
-const Divider = styled.div`
-height: 1px;
-width:100%;
-/* Gray/200 */
-
-background: var(--gray-200);
-`
-
-const ProfileContainer = styled.div`
-padding: 0px 8px;
-padding-bottom:2rem;
-position: fixed;
-bottom: 0;
-
-img {
-  border-radius:100px;
-}
-
-h5 {
-  font-size: var(--font-size-test-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--gray-900);
-}
-
-small {
-  font-size: var(--font-size-text-sm);
-  font-weight: var(--font-weight-regular);
-  color: var(--gray-500);
-}
-`
-
-const SidebarInfo = styled.div`
-
-  padding: 20px 1rem !important;
-  background: var(--gray-50);
-  border-radius:8px;  
-
-  h4 {
-    font-size: var(--font-size-text-sm);
-    font-weight: var(--font-weight-medium);
-  }
-
-  p {
-     font-size: var(--font-size-text-sm);
-     font-weight: var(--font-weight-regular);
-     color: var(--gray-500);
-  }
-`
-const Logo = styled.div`
-`
-
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState("");
   const [announce, setAnnounce] = useState(false);
@@ -301,5 +182,123 @@ const Header = (props) => {
     </>
   )
 }
+
+const Sidebar = styled.div`
+z-index:11;
+position: fixed;
+height:100vh;
+max-width:312px;
+width:96px;
+background:#fff;
+border-right:1px solid #EAECF0;
+padding-top:2rem;
+display:flex;
+flex-direction:column;
+gap:24px;
+transition: width 200ms cubic-bezier(0.08,0.52,0.52,1);
+
+
+  div {
+    padding-left: 1.5rem;
+    padding-right:1.5rem;
+  }
+
+  div > div {
+    padding-left: 0;
+    padding-right:0;
+  }
+
+
+    .info, input, .link-name, .profile-information, .profile button {
+      display:none;
+      opacity: 0;
+      transform: translateX(0%);
+    }
+
+    @media (max-width: 768px) {
+      display:none;
+    }
+  
+`
+
+const SidebarTitle = styled.h3`
+  padding-left: 24px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-xl);
+`
+
+const SidebarLinks = styled.div`
+  ul {
+    gap:4px;
+  }
+
+  li {
+    padding: 8px 12px;
+    cursor:pointer;
+    gap:12px;
+
+    &:hover {
+      background: var(--gray-50);
+      border-radius: 6px;
+    }
+
+    a {
+      color: var(--gray-700);
+      font-size: var(--font-size-text-md);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+`
+
+const Divider = styled.div`
+height: 1px;
+width:100%;
+/* Gray/200 */
+
+background: var(--gray-200);
+`
+
+const ProfileContainer = styled.div`
+padding: 0px 8px;
+padding-bottom:2rem;
+position: fixed;
+bottom: 0;
+
+img {
+  border-radius:100px;
+}
+
+h5 {
+  font-size: var(--font-size-test-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+}
+
+small {
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--gray-500);
+}
+`
+
+const SidebarInfo = styled.div`
+
+  padding: 20px 1rem !important;
+  background: var(--gray-50);
+  border-radius:8px;  
+
+  h4 {
+    font-size: var(--font-size-text-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  p {
+     font-size: var(--font-size-text-sm);
+     font-weight: var(--font-weight-regular);
+     color: var(--gray-500);
+  }
+`
+const Logo = styled.div`
+`
 
 export default Header

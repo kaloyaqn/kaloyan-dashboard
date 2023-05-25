@@ -382,6 +382,10 @@ const GlobalStyle = createGlobalStyle`
 
     }
 
+    .lost {
+        font-size: var(--font-size-text-sm)
+    }
+
     .mobile-nav {
         display:none;
     }

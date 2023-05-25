@@ -7,16 +7,36 @@ import { toast } from 'react-toastify';
 const Projects = () => {  
   const [projectsDB, setProjectDB] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    try {
       const res = await fetch('/api/project/read');
       const data = await res.json();
       setProjectDB(data);
-      console.log('id',data._id);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
-    };
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, [])
+
+  const handleDelete = async (id) => {
+    console.log(projectsDB._id);
+    try {
+      const res = await fetch(`/api/project/delete/${id}`, {
+        method: "DELETE",
+      });
+  
+      const data = await res.json();
+      console.log(data);
+      toast.success("Проектът е изтрит успешно!");
+      fetchData();
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  
 
   //React Table
 
@@ -70,9 +90,9 @@ const Projects = () => {
       {
         Header: "",
         accessor: "actions",
-        Cell: ({ cell }) => (
+        Cell: ({ row }) => (
           <div>
-            <button onClick={handleDelete}>
+            <button onClick={() => handleDelete(row.original._id)}>
               Del
             </button>
           </div>
@@ -82,21 +102,7 @@ const Projects = () => {
     []
   );
 
-  const handleDelete = async (projectTitle) => {
 
-    try {
-      const res = await fetch(`/api/project/delete/${id}`, {
-        method: "DELETE",
-      });
-
-      const data = await res.json();
-      console.log(data);
-
-      toast.error("Проектът е изтрит успешно!"); 
-    } catch (e) {
-      console.error(e)
-    }
-  }
 
   const {
     getTableProps,
@@ -143,7 +149,7 @@ const Projects = () => {
           rows.map(row => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr key={projectsDB._id} {...row.getRowProps()}>
                 {
                 row.cells.map(cell => {               
                   return (

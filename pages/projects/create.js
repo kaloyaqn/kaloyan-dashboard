@@ -194,6 +194,7 @@ export default function CreateProject() {
                         ))}
                         </select>
                         {errors.password && <Error>{errors.password.message}</Error>}
+                        <Link className="lost" href="/clients/">Създай клиент</Link>
                     </div>
                     <div style={{ width: "48%" }}>
                         <Label name="Цена" />
