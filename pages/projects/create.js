@@ -42,6 +42,7 @@ export default function CreateProject() {
             projectTitle: data.projectTitle,
             projectLink: data.projectLink,
             projectStatus: data.projectStatus,
+            projectStatusPrice: data.projectStatusPrice,
             projectType: data.projectType,
             projectDesc: data.projectDesc,
             firstName: data.firstName,
@@ -124,18 +125,33 @@ export default function CreateProject() {
             />
             {errors.projectLink && <Error>{errors.projectLink.message}</Error>}
           </div>
-          <div>
-            <Label name="Статус на прокета" />
-            <select
-              type="text"
-              className="option-select"
-              placeholder="Пример: domain.com (без https://)"
-              id="projectStatus"
-              {...register("projectStatus")}
-            >
-              <option value="Незавършен">Незавършен</option>
-              <option value="Завършен">Завършен</option>
-            </select>
+          <div className="flex space-between">
+                    <div style={{ width: "48%" }}>
+                    <Label name="Статус на прокета" />
+                    <select
+                      type="text"
+                      className="option-select"
+                      placeholder=""
+                      id="projectStatus"
+                      {...register("projectStatus")}
+                    >
+                      <option value="Незавършен">Незавършен</option>
+                      <option value="Завършен">Завършен</option>
+                    </select>
+                    </div>
+                    <div style={{ width: "48%" }}>
+                    <Label name="Платежен статус" />
+                    <select
+                      type="text"
+                      className="option-select"
+                      placeholder=""
+                      id="projectStatusPrice"
+                      {...register("projectStatusPrice")}
+                    >
+                      <option value="Неплатен">Неплатен</option>
+                      <option value="Платен">Платен</option>
+                    </select>
+                    </div>
           </div>
           <div>
             <Label name="Вид на проекта" />
@@ -213,7 +229,7 @@ export default function CreateProject() {
                         />
                         {errors.repeatPassword && <Error>{errors.repeatPassword.message}</Error>}
                     </div>
-                </div>
+          </div>
           <FormButton type="submit" title={spinner} />
         </Form>
       </div>

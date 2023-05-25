@@ -42,7 +42,19 @@ const GlobalStyle = createGlobalStyle`
 
         //success 
         --success-50: #ECFDF3;
+        --success-500: #12B76A;
         --success-700: #027A48;
+
+        //warning
+        --warning-50: #FFFAEB;
+        --warning-500: #F79009;
+        --warning-700: #B54708;
+
+        //error
+        --error-50:#FEF3F2;
+        --error-500: #F04438;
+        --error-700: #B42318;
+
 
 
         //TYPOGRAPHY
@@ -126,6 +138,10 @@ const GlobalStyle = createGlobalStyle`
  
      .g-6 {
          gap:6px;
+     }
+
+     .g-10 {
+        gap:10px;
      }
  
      .g-12 {
@@ -300,8 +316,22 @@ const GlobalStyle = createGlobalStyle`
           }
     }
 
-    .page-header {
+    .dot {
+        width:7px;
+        height:7px;
+        border-radius:50%;
+    }
 
+    .dot-success {
+        background: var(--success-500);
+    }
+
+    .dot-warning: {
+        background: var(--warning-500)
+    }
+
+    .dot-error {
+        background: var(--error-500);
     }
 
     table {
@@ -346,6 +376,8 @@ const GlobalStyle = createGlobalStyle`
         .status-cell {
             font-size:var(--font-size-text-xs);
             font-weight:var(--font-weight-medium);
+            padding:2px 8px;
+            border-radius:1rem;
         }
 
         .status-pending {
@@ -360,6 +392,11 @@ const GlobalStyle = createGlobalStyle`
             color:var(--success-700);
             padding:2px 8px;
             border-radius:1rem;
+        }
+
+        .status-error {
+            background: var(--error-50);
+            color: var(--error-700);
         }
 
         .project-link {
@@ -384,6 +421,18 @@ const GlobalStyle = createGlobalStyle`
 
     .lost {
         font-size: var(--font-size-text-sm)
+    }
+
+    #action-svg {
+        transition: stroke .1s ease-in-out;
+    }
+
+    .action-btn {
+        &:hover {
+            #action-svg {
+                stroke:#464D5B;
+            }
+        }
     }
 
     .mobile-nav {
