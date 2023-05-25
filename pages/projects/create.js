@@ -23,7 +23,9 @@ export default function CreateProject() {
   });
 
   const handleCreate = async (data) => {
-    const selectedClient = clients.find((client) => client._id === data.firstName);
+    const selectedClient = clients.find(
+      (client) => client._id === data.firstName
+    );
     if (selectedClient) {
       const {
         clientFirstname,
@@ -31,7 +33,7 @@ export default function CreateProject() {
         clientPhoneNumber,
         clientEmail,
       } = selectedClient;
-  
+
       try {
         const response = await fetch("/api/project/create", {
           method: "POST",
@@ -46,14 +48,14 @@ export default function CreateProject() {
             projectType: data.projectType,
             projectDesc: data.projectDesc,
             firstName: data.firstName,
-            clientFirstname, 
+            clientFirstname,
             clientLastname,
             clientPhoneNumber,
             clientEmail,
             projectPrice: data.projectPrice,
           }),
         });
-  
+
         if (response.ok) {
           toast.success("Проектът е създаден успешно!");
           router.push("/projects");
@@ -66,7 +68,6 @@ export default function CreateProject() {
       }
     }
   };
-  
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -104,10 +105,12 @@ export default function CreateProject() {
                 required: {
                   value: true,
                   message: "Името на проекта е задължително!",
-                }
+                },
               })}
             />
-            {errors.projectTitle && <Error>{errors.projectTitle.message}</Error>}
+            {errors.projectTitle && (
+              <Error>{errors.projectTitle.message}</Error>
+            )}
           </div>
           <div>
             <Label name="Линк към проекта" />
@@ -120,38 +123,38 @@ export default function CreateProject() {
                 required: {
                   value: true,
                   message: "Линк към проекта е задължителен!",
-                }
+                },
               })}
             />
             {errors.projectLink && <Error>{errors.projectLink.message}</Error>}
           </div>
           <div className="flex space-between">
-                    <div style={{ width: "48%" }}>
-                    <Label name="Статус на прокета" />
-                    <select
-                      type="text"
-                      className="option-select"
-                      placeholder=""
-                      id="projectStatus"
-                      {...register("projectStatus")}
-                    >
-                      <option value="Незавършен">Незавършен</option>
-                      <option value="Завършен">Завършен</option>
-                    </select>
-                    </div>
-                    <div style={{ width: "48%" }}>
-                    <Label name="Платежен статус" />
-                    <select
-                      type="text"
-                      className="option-select"
-                      placeholder=""
-                      id="projectStatusPrice"
-                      {...register("projectStatusPrice")}
-                    >
-                      <option value="Неплатен">Неплатен</option>
-                      <option value="Платен">Платен</option>
-                    </select>
-                    </div>
+            <div style={{ width: "48%" }}>
+              <Label name="Статус на прокета" />
+              <select
+                type="text"
+                className="option-select"
+                placeholder=""
+                id="projectStatus"
+                {...register("projectStatus")}
+              >
+                <option value="Незавършен">Незавършен</option>
+                <option value="Завършен">Завършен</option>
+              </select>
+            </div>
+            <div style={{ width: "48%" }}>
+              <Label name="Платежен статус" />
+              <select
+                type="text"
+                className="option-select"
+                placeholder=""
+                id="projectStatusPrice"
+                {...register("projectStatusPrice")}
+              >
+                <option value="Неплатен">Неплатен</option>
+                <option value="Платен">Платен</option>
+              </select>
+            </div>
           </div>
           <div>
             <Label name="Вид на проекта" />
@@ -181,54 +184,58 @@ export default function CreateProject() {
                 required: {
                   value: true,
                   message: "Описанието на проекта е задължително!",
-                }
+                },
               })}
             />
             {errors.projectDesc && <Error>{errors.projectDesc.message}</Error>}
           </div>
           <div className="flex space-between">
-                    <div style={{ width: "48%" }}>
-                        <Label name="Избери клиент" />
-                        <select
-                        type="text"
-                        className="option-select"
-                        placeholder="Име на клиента"
-                        id="projectClientFirst"
-                        {...register("firstName", {
-                            required: {
-                            value: true,
-                            message: "Първото име на клиента е задължително!",
-                            }
-                        })}
-                        aria-invalid={errors.firstName ? "true" : "false"}
-                        >
-                        <option value="">Избери клиент</option>
-                        {clients.map((client) => (
-                            <option key={client._id} value={client._id}>
-                            {client.clientFirstname} {client.clientLastname}
-                            </option>
-                        ))}
-                        </select>
-                        {errors.password && <Error>{errors.password.message}</Error>}
-                        <Link className="lost" href="/clients/">Създай клиент</Link>
-                    </div>
-                    <div style={{ width: "48%" }}>
-                        <Label name="Цена" />
-                        <input
-                        className={errors.projectDesc ? "input-error" : ""}
-                        type="number"
-                        name="projectPrice"
-                        placeholder="Цена в лева"
-                        id="projectPrice"
-                        {...register("projectPrice", {
-                            required: {
-                            value: true,
-                            message: "Цената на проекта е задължителна!",
-                            }
-                        })}
-                        />
-                        {errors.repeatPassword && <Error>{errors.repeatPassword.message}</Error>}
-                    </div>
+            <div style={{ width: "48%" }}>
+              <Label name="Избери клиент" />
+              <select
+                type="text"
+                className="option-select"
+                placeholder="Име на клиента"
+                id="projectClientFirst"
+                {...register("firstName", {
+                  required: {
+                    value: true,
+                    message: "Първото име на клиента е задължително!",
+                  },
+                })}
+                aria-invalid={errors.firstName ? "true" : "false"}
+              >
+                <option value="">Избери клиент</option>
+                {clients.map((client) => (
+                  <option key={client._id} value={client._id}>
+                    {client.clientFirstname} {client.clientLastname}
+                  </option>
+                ))}
+              </select>
+              {errors.password && <Error>{errors.password.message}</Error>}
+              <Link className="lost" href="/clients/">
+                Създай клиент
+              </Link>
+            </div>
+            <div style={{ width: "48%" }}>
+              <Label name="Цена" />
+              <input
+                className={errors.projectDesc ? "input-error" : ""}
+                type="number"
+                name="projectPrice"
+                placeholder="Цена в лева"
+                id="projectPrice"
+                {...register("projectPrice", {
+                  required: {
+                    value: true,
+                    message: "Цената на проекта е задължителна!",
+                  },
+                })}
+              />
+              {errors.repeatPassword && (
+                <Error>{errors.repeatPassword.message}</Error>
+              )}
+            </div>
           </div>
           <FormButton type="submit" title={spinner} />
         </Form>

@@ -163,6 +163,10 @@ const GlobalStyle = createGlobalStyle`
      .p-16 {
         padding:1rem;
      }
+
+     .p-left-16 {
+        padding-left:1rem;
+     }
  
      .mb-20 {
          margin-bottom:20px;
@@ -176,6 +180,10 @@ const GlobalStyle = createGlobalStyle`
      .text-center {
          text-align:center !important:
  
+     }
+
+     .d-none {
+        display:none;
      }
  
      input, select {
@@ -303,7 +311,24 @@ const GlobalStyle = createGlobalStyle`
                }
              }
            }      
-     }
+    }
+    
+    .mobile-nav-open {
+        box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+        border-radius: 8px;
+        padding:1rem;
+        padding-bottom:24px;
+        padding-top:24px;
+        li {
+            a {
+                color: var(--gray-900);
+                font-weight: var(--font-weight-medium);
+                
+            }
+        }
+
+    }
+
     .pending-status {
         background:red;
     }
@@ -364,6 +389,7 @@ const GlobalStyle = createGlobalStyle`
         tbody {
             td {
                 padding: 1rem 0px 1rem 24px;
+                border-bottom: 1px solid var(--gray-200);
             }
         }
 
@@ -441,11 +467,14 @@ const GlobalStyle = createGlobalStyle`
 
     @media (max-width:768px) {
 
+        main {
+            margin-top:2rem;
+        }
+
         .mobile-nav {
             display:block;
             display:flex;  
             box-shadow: var(--shadow-sm);
-            margin-bottom:2rem;
         }
 
         h2 {
