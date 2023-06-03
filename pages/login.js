@@ -6,58 +6,7 @@ import Link from "next/link";
 import {useForm} from "react-hook-form"
 import { useRouter } from 'next/router';
 import {toast} from 'react-toastify';
-
-const Form = styled.form`
-padding: 24px;
-width:500px;
-max-width: 500px;
-
-h1 {
-    text-align:center;
-    color: var(--gray-900);
-    font-weight: var(--font-weight-semibold);
-    font-color: var(--font-size-display-sm);
-}
-
-p {
-    text-align:center;
-    color: var(--gray-500);
-    font-size: var(--font-size-text-md);
-    font-weight: var(--font-weight-regular);
-}
-
-span {
-    text-align:center;
-    font-size: var(--font-size-text-sm);
-    font-weight: var(--font-weight-regular);
-
-    a {
-        color:var(--primary-700);
-        font-weight:var(--font-weight-semibold);
-
-        &:hover {
-            color: var(--primary-800);
-        }
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    div {
-        flex-direction:column;
-        width:100% !important;
-        gap:20px;
-    }
-  }
-  
-`
-
-const Error = styled.h6`
-color: #F04438;
-font-size: 14px;
-margin-top:6px;
-font-weight:400;
-
-`
+import Head from 'next/head';
 
 export default function Login() {
     const [spinner, setSpinner] = useState('Log in');
@@ -110,6 +59,10 @@ export default function Login() {
         }
     }
     return (
+        <>
+        <Head>
+            <title>Static Studio - Влез</title>
+        </Head>
         <div className="flex justify-center align-center vh-100">
         <Form 
         className="flex column g-20"
@@ -166,5 +119,58 @@ export default function Login() {
         </Form>
 
         </div>
+        </>
     )
 }
+
+const Form = styled.form`
+padding: 24px;
+width:500px;
+max-width: 500px;
+
+h1 {
+    text-align:center;
+    color: var(--gray-900);
+    font-weight: var(--font-weight-semibold);
+    font-color: var(--font-size-display-sm);
+}
+
+p {
+    text-align:center;
+    color: var(--gray-500);
+    font-size: var(--font-size-text-md);
+    font-weight: var(--font-weight-regular);
+}
+
+span {
+    text-align:center;
+    font-size: var(--font-size-text-sm);
+    font-weight: var(--font-weight-regular);
+
+    a {
+        color:var(--primary-700);
+        font-weight:var(--font-weight-semibold);
+
+        &:hover {
+            color: var(--primary-800);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    div {
+        flex-direction:column;
+        width:100% !important;
+        gap:20px;
+    }
+  }
+  
+`
+
+const Error = styled.h6`
+color: #F04438;
+font-size: 14px;
+margin-top:6px;
+font-weight:400;
+
+`

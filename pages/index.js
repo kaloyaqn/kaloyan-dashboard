@@ -1,5 +1,7 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 export default function Index() {
 
@@ -17,14 +19,23 @@ export default function Index() {
     }
   }
 
+  const { data: session } = useSession()
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    )
+  }
   return (
     <>
       <Head>
         <title>Dashboard - Home</title>
         <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
       </Head>
-      <h1>Welcome to the dashboard</h1>
-      <button onClick={handleLogout}>Logout</button>
+       Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
     </>
   )
 }

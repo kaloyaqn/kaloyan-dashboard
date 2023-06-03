@@ -11,11 +11,15 @@ export default async (req, res) => {
 
         const user = await db.collection('users').findOne({email});
 
+
+
         if (!user) {
             return res.status(401).json({message: "Email not found"})
         }
 
-        const hashedUserPassword = await bcrypt.hash(user.password, 10);
+        const hashedUserPassword = await bcrypt.hash(user.password, 12);
+        
+        console.log(hashedUserPassword)
 
         if (await bcrypt.compare(password, hashedUserPassword)) {
             const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {

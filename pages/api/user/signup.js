@@ -14,21 +14,23 @@ export default async function handle(req, res) {
             firstname,
             lastname,
             email,
-            password,
+            password: await hash(password, 12),
             createdAt: new Date()
         };
 
-        const user = await db.collection("users").insertOne(doc);
         const emailCheck = await db.collection("users").findOne({email})
-
         if (emailCheck) {
             return res.status(401).json({message: "Email in use"})
         }
+
+
 
         //generatevame jwt token da mojem da lognem usera sled kato se e registriral
         const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {
             expiresIn: '1d'
         });
+
+        //Hash password
 
         res.setHeader(
             'Set-Cookie',
@@ -37,11 +39,7 @@ export default async function handle(req, res) {
             ).toUTCString()}; SameSite=Strict`
         );
 
-        //vkarvame user details v sesiqta
-        req.session.user = {
-            userId: user._id,
-            email: user.email
-        }
+        const user = await db.collection("users").insertOne(doc);
 
         res.status(200).json({message: "Signed up successfully"});
     } catch (e) {
