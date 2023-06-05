@@ -9,8 +9,6 @@ import Layout from "../constants/Layout"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
-import { SessionProvider } from "next-auth/react"
-
 import GlobalStyle from "../theme/globalStyles"
 
 
@@ -35,9 +33,7 @@ export default function MyApp({ Component, pageProps: {session, ...pageProps} })
             <Component {...pageProps} />
           </Layout>
       ) : (
-        <SessionProvider session={session}>
           <Component {...pageProps} />
-        </SessionProvider>
       )}
 
     </>

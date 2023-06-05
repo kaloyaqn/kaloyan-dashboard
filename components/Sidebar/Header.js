@@ -174,12 +174,12 @@ const Header = (props) => {
 
           <div className="profile">
             <ProfileContainer className="flex g-32 ">
-            <UserButton afterSignOutUrl="/"/>
             </ProfileContainer>
           </div>
         </Sidebar>
 
       </aside>
+      
     </>
   )
 }

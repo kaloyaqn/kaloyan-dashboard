@@ -181,6 +181,10 @@ const GlobalStyle = createGlobalStyle`
  
      }
 
+     .overflow-y {
+        overflow:hidden;
+     }
+
      .d-none {
         display:none;
      }
