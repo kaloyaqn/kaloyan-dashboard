@@ -1,6 +1,8 @@
 import Head from "next/head"
 import { useState, useEffect, createContext } from 'react'
 import { useRouter } from "next/router"
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 import Layout from "../constants/Layout"
 
@@ -20,7 +22,7 @@ export default function MyApp({ Component, pageProps: {session, ...pageProps} })
     const router = useRouter();
   
 
-    const showLayout = router.pathname !== '/login';
+    const showLayout = router.pathname !== '/sign-in';
 
 
   return (
@@ -29,11 +31,9 @@ export default function MyApp({ Component, pageProps: {session, ...pageProps} })
       <GlobalStyle />
         
       {showLayout && loggedIn ? (
-        <SessionProvider session={session}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </SessionProvider>
       ) : (
         <SessionProvider session={session}>
           <Component {...pageProps} />
