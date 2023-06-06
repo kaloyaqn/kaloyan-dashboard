@@ -127,11 +127,14 @@ const GlobalStyle = createGlobalStyle`
         width: 100% !important;
     }
 
+    //view height
+
     .vh-100 {
         height:100vh !important;
-     }
- 
-     .g-4 {
+    }
+    
+    //gap
+    .g-4 {
          gap:4px;
      }
  
@@ -166,7 +169,11 @@ const GlobalStyle = createGlobalStyle`
      .p-left-16 {
         padding-left:1rem;
      }
- 
+     
+     //margin
+     .m-2 {
+        margin: 2rem;
+    }
      .mb-20 {
          margin-bottom:20px;
      }
@@ -187,6 +194,10 @@ const GlobalStyle = createGlobalStyle`
 
      .d-none {
         display:none;
+     }
+
+     .welcome-back {
+        font-size:var(--font-size-display-sm);
      }
  
      input, select {
@@ -478,6 +489,10 @@ const GlobalStyle = createGlobalStyle`
             display:block;
             display:flex;  
             box-shadow: var(--shadow-sm);
+        }
+
+        h1 {
+            padding-top:2rem;
         }
 
         h2 {
