@@ -120,12 +120,16 @@ const Header = (props) => {
           </defs>
           </svg>
         </Logo>
+        <div className="flex g-12 align-center">
+        <UserButton afterSignOutUrl="/"/>
         <button onClick={handleMobileNavClick}>
         <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect y="0.5" width="40" height="40" rx="8" fill="white"/>
         <path d="M11 20.5H25M11 14.5H29M11 26.5H29" stroke="#667085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         </button>
+        </div>
+
       </div>
       <div className={isOpen ? 'mobile-nav-open' : "d-none"}>
       <ul className="flex column g-16">
@@ -172,10 +176,14 @@ const Header = (props) => {
           </div>
           )}
 
-          <div className="profile">
-            <ProfileContainer className="flex g-32 ">
-            </ProfileContainer>
-          </div>
+          <ProfileContainer className="Profil flex bottom">
+            <ul>
+              <li>
+            <UserButton afterSignOutUrl="/"/>
+              </li>
+            </ul>
+          </ProfileContainer>
+          
         </Sidebar>
 
       </aside>
@@ -200,8 +208,7 @@ transition: width 200ms cubic-bezier(0.08,0.52,0.52,1);
 
 
   div {
-    padding-left: 1.5rem;
-    padding-right:1.5rem;
+    justify-content:center;
   }
 
   div > div {
@@ -237,6 +244,7 @@ const SidebarLinks = styled.div`
     padding: 8px 12px;
     cursor:pointer;
     gap:12px;
+    justify-content:center;
 
     &:hover {
       background: var(--gray-50);
@@ -260,10 +268,9 @@ background: var(--gray-200);
 `
 
 const ProfileContainer = styled.div`
-padding: 0px 8px;
-padding-bottom:2rem;
 position: fixed;
 bottom: 0;
+margin: 0 auto;
 
 img {
   border-radius:100px;
