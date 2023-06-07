@@ -13,7 +13,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.js", "pages/index.js", "pages/sign-up/[[...index]].tsx", "pages/sign-in/[[...index]].tsx", "middleware.ts", "constants/Layout.js"],
   "exclude": ["node_modules"]
