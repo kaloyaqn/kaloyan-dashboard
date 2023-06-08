@@ -3,13 +3,12 @@ import { useState, useEffect, createContext } from 'react'
 import { useRouter } from "next/router"
 import { ClerkProvider } from "@clerk/nextjs";
 
-
 import Layout from "../constants/Layout"
 
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
-import GlobalStyle from "../theme/globalStyles"
+import "../styles/globals.css"
 
 
 export const UserContext = createContext({})
@@ -26,7 +25,6 @@ export default function MyApp({ Component, pageProps: {session, ...pageProps} })
   return (
     <>
       <ToastContainer/>
-      <GlobalStyle />
         
       {showLayout && loggedIn ? (
           <Layout>

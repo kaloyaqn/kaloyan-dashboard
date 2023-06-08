@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import clientPromise from '../../../lib/mongodb';
+import clientPromise from '../../lib/mongodb';
 import bcrypt, { hash } from 'bcrypt'
 
 export default async (req, res) => {
