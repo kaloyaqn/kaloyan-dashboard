@@ -5,6 +5,8 @@ import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import styled from "styled-components"
 
+import MetricItem from "@/components/MetricItem";
+
 
 export default function Index({data}) {
   const router = useRouter();
@@ -44,10 +46,12 @@ export default function Index({data}) {
             Можеш да следи оборот, добавяш проекти, записваш кленти и още.
           </Description>
         </div>
-
-        <div>
-          kur
-        </div>
+      
+      <div className="metricContainer flex g-24">
+      <MetricItem metricItemTitle="Общо проекти" metricItemCount={projectCount}/>
+      <MetricItem metricItemTitle="Оборот" metricItemCount="-2лв"/>
+      <MetricItem metriv/>
+      </div>
       </div>
       
 

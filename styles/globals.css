@@ -82,6 +82,10 @@
  .space-between {
 	 justify-content: space-between !important;
 }
+
+.align-baseline {
+  align-items: baseline !important;
+}
  .align-center {
 	 align-items: center !important;
 }
@@ -97,6 +101,10 @@
  .g-6 {
 	 gap: 6px;
 }
+
+.g-8 {
+  gap:8px;
+}
  .g-10 {
 	 gap: 10px;
 }
@@ -108,6 +116,9 @@
 }
  .g-20 {
 	 gap: 20px;
+}
+.g-24 {
+  gap:24px;
 }
  .g-32 {
 	 gap: 2rem;
@@ -364,6 +375,9 @@
  .mobile-nav {
 	 display: none;
 }
+
+
+
  @media (max-width: 768px) {
 	 main {
 		 margin-top: 2rem;
@@ -374,7 +388,6 @@
 		 box-shadow: var(--shadow-sm);
 	}
 	 h1 {
-		 padding-top: 2rem;
 	}
 	 h2 {
 		 font-size: var(--font-size-display-xs);
