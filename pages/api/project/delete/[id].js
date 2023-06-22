@@ -12,7 +12,7 @@ export default async function handle(req, res) {
         }
 
         const client = await clientPromise;
-        const db = client.db("kaloyan_dashboard");
+        const db = client.db(`${process.env.CLIENT_DB}`);
 
         const objectId = new ObjectId(id);
         

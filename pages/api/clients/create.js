@@ -1,10 +1,9 @@
-import { Dvr } from "@mui/icons-material";
 import clientPromise from "../../../lib/mongodb";
 
 export default async function handle(req, res) {
     try {
         const client = await clientPromise;
-        const db = client.db("kaloyan_dashboard");
+        const db = client.db(`${process.env.CLIENT_DB}`);
 
         const {
             clientFirstname,
@@ -22,6 +21,7 @@ export default async function handle(req, res) {
         };
 
         const result = await db.collection("clients").insertOne(doc);
+
 
         console.log(`A document with the _id: ${result.insertedId}`);
         res.status(200).json({message: "Документът е добавен успешно"})
