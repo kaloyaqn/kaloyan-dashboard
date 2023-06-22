@@ -13,7 +13,7 @@
     const router = useRouter();
     const { user } = useUser();
     const [userFirstname, setUserFirstname] = useState("зареждане...");
-    const [projectCount, setProjectCount] = useState([]);
+    const [projectCount, setProjectCount] = useState(["..."]);
 
     useEffect(() => {
       const fetchUser = async () => {
