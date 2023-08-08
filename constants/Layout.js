@@ -4,6 +4,9 @@ import { ClerkProvider } from '@clerk/nextjs';
 
 import Header from '../components/Sidebar/Header';
 
+import 'reactjs-popup/dist/index.css';
+
+
 const Layout = ({ children }) => {
   const router = useRouter();
   const isSignUpPage = router.pathname.includes('/sign-up');
