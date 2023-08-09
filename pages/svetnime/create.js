@@ -71,6 +71,29 @@ export default function CreateSvetnime() {
     fetchClients();
   }, []);
 
+  useEffect(() => {
+    // Extract query parameters from the URL
+    const queryParams = router.query;
+    if (queryParams.ime_familiya) {
+      setValue("svetnimeClientName", queryParams.ime_familiya);
+    }
+    if (queryParams.tel) {
+      setValue("svetnimeClientNumber", queryParams.tel);
+    }
+    if (queryParams.address) {
+      setValue("svetnimeClientAddress", queryParams.address);
+    }
+    if (queryParams.product_url) {
+      setValue("svetnimeLink", decodeURIComponent(queryParams.product_url));
+    }
+    if (queryParams.product_name) {
+      setValue("svetnimeProduct", queryParams.product_name);
+    }
+    if (queryParams.product_price) {
+      setValue("svetnimeOrderPrice", queryParams.product_price);
+    }
+  }, [router.query]);
+
   return (
     <>
       <div className="flex justify-center align-center vh-100">
