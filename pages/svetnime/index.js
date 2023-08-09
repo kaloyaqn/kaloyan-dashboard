@@ -5,11 +5,15 @@ import AddButton from "../../components/Buttons/AddButton";
 import { toast } from "react-toastify";
 
 import Popup from "reactjs-popup";
+import axios from 'axios';
 import FormButton from "../../components/Buttons/FormButton";
+
+import EditPopup from "../../components/Forms/EditPopup";
 
 const Svetnime = () => {
   const [projectsDB, setProjectDB] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
+
 
   const fetchData = async () => {
     try {
@@ -24,6 +28,19 @@ const Svetnime = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleEditSave = (editedData) => {
+    // Update the data in the table row
+    const updatedProjectsDB = projectsDB.map((project) => {
+      if (project._id === editedData._id) {
+        return editedData;
+      }
+      return project;
+    });
+    setProjectDB(updatedProjectsDB);
+    fetchData();
+  };
+  
 
   const handleDelete = async (id) => {
     try {
@@ -50,7 +67,7 @@ const Svetnime = () => {
           <>
             <div>{svetnimeProduct}</div>
             <a href={`${svetnimeLink}`} className="project-link">
-              {svetnimeLink}
+              Линк
             </a>
           </>
         ),
@@ -264,6 +281,15 @@ const Svetnime = () => {
                 </FormButton>
               </div>
             </Popup>
+        <Popup
+          trigger={<button>Edit</button>}
+          modal
+        > 
+          <EditPopup
+            rowData={row.original}
+            onSave={(editedData) => handleEditSave(row.original._id, editedData)}
+            />
+        </Popup>
           </div>
         ),
       },
@@ -276,16 +302,15 @@ const Svetnime = () => {
 
   const handleViewDetails = (rowData) => {
     setSelectedRow(rowData);
-    // Code to show modal or display area for details
   };
   return (
     <>
       <Head>
-        <title>Static Dashboard - Проекти</title>
+        <title>Svetnime.net - Поръчки</title>
       </Head>
 
       <div className="page-header flex space-between mb-32">
-        <h2>Проекти</h2>
+        <h2>Поръчки</h2>
         <AddButton href="/svetnime/create" title="Добави поръчка" />
       </div>
       <div className="flex space-between"></div>

@@ -149,7 +149,7 @@ export default function CreateSvetnime() {
                 id="svetnimeOrderShippingType"
                 {...register("svetnimeOrderShippingType")}
               >
-                <option value="Личен Адрес">Личен адрес</option>
+                <option value="ЛА ">Личен Адрес</option>
                 <option value="Офис">Офис</option>
               </select>
           </div>

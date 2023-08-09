@@ -20,7 +20,7 @@ const Button = styled.button`
 
 const FormButton = (props) => {
   return (
-    <Button className={props.className} type={props.type}>{props.title}</Button>
+    <Button className={props.className} onClick={props.onClick} type={props.type}>{props.title}</Button>
   )
 }
 
